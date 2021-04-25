@@ -43,7 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         appBar: AppBar(
-          title: Text('Notes'),
+          title: Text(
+            'Notes',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: SingleChildScrollView(

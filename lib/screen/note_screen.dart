@@ -18,10 +18,8 @@ class _NoteScreenState extends State<NoteScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Notes',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          widget.title,
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).primaryColor,
       ),

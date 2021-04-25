@@ -10,11 +10,15 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _titleTextEditingController =
       TextEditingController();
 
+  final TextEditingController _bodyTextEditingController =
+      TextEditingController();
+
   List<Map<String, dynamic>> notes = [];
 
   void addNote() {
     var note = {
       'title': _titleTextEditingController.text,
+      'body': _bodyTextEditingController.text,
     };
     notes.insert(0, note);
 
@@ -50,15 +54,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Card(
                   elevation: 10,
                   child: ListTile(
-                    title: TextField(
-                      controller: _titleTextEditingController,
-                      onSubmitted: (value) {
-                        addNote();
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Title',
-                        border: InputBorder.none,
-                      ),
+                    title: Column(
+                      children: [
+                        TextField(
+                          controller: _titleTextEditingController,
+                          onSubmitted: (value) {
+                            addNote();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Title',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                        TextField(
+                          controller: _bodyTextEditingController,
+                          onSubmitted: (value) {
+                            addNote();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Body',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ],
                     ),
                     trailing: IconButton(
                       iconSize: 32,
@@ -80,7 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     var note = notes[index];
 
-                    return NoteListTile(title: note['title']);
+                    return NoteListTile(
+                      note['title'],
+                      note['body'],
+                    );
                   },
                 ),
               ),
